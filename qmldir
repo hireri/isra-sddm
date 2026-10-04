@@ -1,0 +1,5 @@
+singleton Colors 1.0 Colors.qml
+singleton Config 1.0 Config.qml
+singleton Localization 1.0 Localization.qml
+singleton LocaleService 1.0 LocaleService.qml
+singleton LockscreenService 1.0 LockscreenService.qml
