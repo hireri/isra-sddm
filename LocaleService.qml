@@ -6,7 +6,7 @@ QtObject {
 
     readonly property var _qtLocale: Qt.locale(Config.language.split("_").slice(0, 2).join("_"))
 
-    property string liveTime: ""
+    property string liveTime: "00:00"
     property string liveSecs: ""
     property string liveAmPm: ""
     property string shortDateText: ""

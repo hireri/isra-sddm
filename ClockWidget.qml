@@ -33,11 +33,11 @@ Item {
 
         layer.enabled: true
         layer.effect: MultiEffect {
-            shadowEnabled: true
+            shadowEnabled: Config.clock.showShadow ?? true
             shadowBlur: ((Config.clock.shadowBlur ?? 16) / 32)
             shadowColor: Qt.alpha("black", Config.clock.shadowOpacity ?? 0.2)
             shadowHorizontalOffset: Config.clock.shadowX ?? 0
-            shadowVerticalOffset: Config.clock.shadowY ?? 4
+            shadowVerticalOffset: Config.clock.shadowY ?? 0
         }
 
         readonly property string _font: Config.clock.fontFamily !== "" ? Config.clock.fontFamily : Config.fontFamily
@@ -68,19 +68,19 @@ Item {
 
         Component {
             id: horizontalComp
-            ClockHorizontal { currentTime: root._currentTime; clockFont: clockRoot._font; textColor: clockRoot._textColor; subColor: clockRoot._subColor; halign: clockRoot._halign; showSeconds: Config.clock.showSeconds ?? false; is12h: Config.hourFormat !== 0; analogSize: Config.clock.analogSize ?? 200 }
+            ClockHorizontal { currentTime: root._currentTime; immediateShapes: true; clockFont: clockRoot._font; textColor: clockRoot._textColor; subColor: clockRoot._subColor; halign: clockRoot._halign; showSeconds: Config.clock.showSeconds ?? false; is12h: Config.hourFormat !== 0; analogSize: (Config.clock.size ?? 100) * 2 }
         }
         Component {
             id: verticalComp
-            ClockVertical { currentTime: root._currentTime; clockFont: clockRoot._font; textColor: clockRoot._textColor; subColor: clockRoot._subColor; halign: clockRoot._halign; showSeconds: Config.clock.showSeconds ?? false; is12h: Config.hourFormat !== 0; analogSize: Config.clock.analogSize ?? 200 }
+            ClockVertical { currentTime: root._currentTime; immediateShapes: true; clockFont: clockRoot._font; textColor: clockRoot._textColor; subColor: clockRoot._subColor; halign: clockRoot._halign; showSeconds: Config.clock.showSeconds ?? false; is12h: Config.hourFormat !== 0; analogSize: (Config.clock.size ?? 100) * 2 }
         }
         Component {
             id: wordComp
-            ClockWord { currentTime: root._currentTime; clockFont: clockRoot._font; textColor: clockRoot._textColor; subColor: clockRoot._subColor; halign: clockRoot._halign; showSeconds: Config.clock.showSeconds ?? false; is12h: Config.hourFormat !== 0; analogSize: Config.clock.analogSize ?? 200 }
+            ClockWord { currentTime: root._currentTime; clockFont: clockRoot._font; textColor: clockRoot._textColor; subColor: clockRoot._subColor; halign: clockRoot._halign; showSeconds: Config.clock.showSeconds ?? false; is12h: Config.hourFormat !== 0; analogSize: (Config.clock.size ?? 100) * 2 }
         }
         Component {
             id: analogComp
-            ClockAnalog { currentTime: root._currentTime; immediateShapes: true; clockFont: clockRoot._font; textColor: clockRoot._textColor; subColor: clockRoot._subColor; halign: clockRoot._halign; showSeconds: Config.clock.showSeconds ?? false; is12h: Config.hourFormat !== 0; analogSize: Config.clock.analogSize ?? 200 }
+            ClockAnalog { currentTime: root._currentTime; immediateShapes: true; clockFont: clockRoot._font; textColor: clockRoot._textColor; subColor: clockRoot._subColor; halign: clockRoot._halign; showSeconds: Config.clock.showSeconds ?? false; is12h: Config.hourFormat !== 0; analogSize: (Config.clock.size ?? 100) * 2 }
         }
     }
 }

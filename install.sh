@@ -15,6 +15,7 @@ done
 $SUDO install -d -o "$USER" -g "$(id -gn)" "$DEST"
 cp -r "$SRC"/*.qml "$SRC"/*.js "$SRC"/sync.sh "$SRC"/qmldir "$SRC"/metadata.desktop "$DEST"/
 rsync -a --exclude=.git --exclude=.gitignore --exclude=README.md --exclude=example\*.qml --exclude=ShapeCanvas.qml "$SRC"/shapes/ "$DEST"/shapes/
+rsync -a "$SRC"/shaders/ "$DEST"/shaders/
 
 SDDM_THEME_DIR="$DEST" "$SRC/sync.sh"
 [[ -s "$DEST/Generated.js" ]] || { echo "[sddm-install] sync produced no theme data (has the shell applied a wallpaper yet?); not activating" >&2; exit 1; }
